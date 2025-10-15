@@ -9,6 +9,5 @@ A header-only library for using ANSI console escape codes, it is currently only 
 ![License](https://badgen.net/github/issues/MrBisquit/ansi_console_v2)
 ![License](https://badgen.net/github/commits/MrBisquit/ansi_console_v2)
 ![License](https://badgen.net/github/last-commit/MrBisquit/ansi_console_v2)
-![License](https://badgen.net/github/dependabot/MrBisquit/ansi_console_v2)
 
 ![Colours](media/colours.png)

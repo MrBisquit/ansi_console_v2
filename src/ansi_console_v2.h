@@ -299,7 +299,11 @@ static __console_rgb_value_t __console_rgb_closest_v(uint8_t r, uint8_t g, uint8
 }
 
 static __console_rgb_t __console_hex_to_rgb(uint32_t hex) {
-    
+    return {
+        (uint8_t)(((hex >> 16) & 0xFF) / 255),
+        (uint8_t)(((hex >> 8) & 0xFF) / 255),
+        (uint8_t)(((hex) & 0xFF) / 255) 
+    };
 }
 
 #endif // CONSOLE_H
