@@ -291,7 +291,7 @@ static __console_rgb_value_t __console_rgb_colors[16] = {
 };
 
 static __console_rgb_value_t __console_rgb_closest(__console_rgb_t rgb) {
-
+    // TODO: Functionality for this
 }
 
 static __console_rgb_value_t __console_rgb_closest_v(uint8_t r, uint8_t g, uint8_t b) {
@@ -304,6 +304,58 @@ static __console_rgb_t __console_hex_to_rgb(uint32_t hex) {
         (uint8_t)((hex >> 8) & 0xFF),
         (uint8_t)((hex) & 0xFF)
     };
+}
+
+/// @brief Converts a HEX color value to the closest ANSI color (Foreground)
+/// @param hex The HEX color value
+/// @return The closest ANSI color (Foreground)
+static uint8_t console_hex_to_color_fg(uint32_t hex) {
+    __console_rgb_value_t value = __console_rgb_closest(__console_hex_to_rgb(hex));
+    return value.graphics_color_fg;
+}
+
+/// @brief Converts a HEX color value to the closest ANSI color (Background)
+/// @param hex The HEX color value
+/// @return The closest ANSI color (Background)
+static uint8_t console_hex_to_color_bg(uint32_t hex) {
+    __console_rgb_value_t value = __console_rgb_closest(__console_hex_to_rgb(hex));
+    return value.graphics_color_bg;
+}
+
+/// @brief Converts an RGB value to the closest ANSI color (Foreground)
+/// @param r Red
+/// @param g Green
+/// @param b Blue
+/// @return The closest ANSI color (Foreground)
+static uint8_t console_rgb_to_color_v_fg(uint8_t r, uint8_t g, uint8_t b) {
+    __console_rgb_value_t value = __console_rgb_closest_v(r, g, b);
+    return value.graphics_color_fg;
+}
+
+/// @brief Converts an RGB value to the closest ANSI color (Background)
+/// @param r Red
+/// @param g Green
+/// @param b Blue
+/// @return The closest ANSI color (Background)
+static uint8_t console_rgb_to_color_v_bg(uint8_t r, uint8_t g, uint8_t b) {
+    __console_rgb_value_t value = __console_rgb_closest_v(r, g, b);
+    return value.graphics_color_bg;
+}
+
+/// @brief Converts an RGB value (`__console_rgb_t` (`__console_rgb`)) to the closest ANSI color (Foreground)
+/// @param rgb The RGB value (`__console_rgb_t` (`__console_rgb`))
+/// @return The closest ANSI color (Foreground)
+static uint8_t console_rgb_to_color_fg(__console_rgb_t rgb) {
+    __console_rgb_value_t value = __console_rgb_closest(rgb);
+    return value.graphics_color_fg;
+}
+
+/// @brief Converts an RGB value (`__console_rgb_t` (`__console_rgb`)) to the closest ANSI color (Background)
+/// @param rgb The RGB value (`__console_rgb_t` (`__console_rgb`))
+/// @return The closest ANSI color (Background)
+static uint8_t console_rgb_to_color_bg(__console_rgb_t rgb) {
+    __console_rgb_value_t value = __console_rgb_closest(rgb);
+    return value.graphics_color_bg;
 }
 
 #endif // CONSOLE_H
