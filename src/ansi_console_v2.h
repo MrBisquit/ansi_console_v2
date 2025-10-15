@@ -272,22 +272,22 @@ struct __console_rgb {
 
 /// @brief A list of RGB values to match with console colors
 static __console_rgb_value_t __console_rgb_colors[16] = {
-    { 0,   0,   0,   30,  40  },    // Black   (R:0   G:0   B:0   FG:30  BG:40  HEX:0x000000)
-    { 197, 15,  31,  31,  41  },    // Red     (R:197 G:15  B:31  FG:31  BG:41  HEX:0xC50F1F)
-    { 19,  161, 14,  32,  42  },    // Green   (R:19  G:161 B:14  FG:32  BG:42  HEX:0x13A10E)
-    { 193, 156, 0,   33,  43  },    // Yellow  (R:193 G:156 B:0   FG:33  BG:43  HEX:0xC19C00)
-    // Blue
-    // Magenta
-    // Cyan
-    // White
-    // Bright Black (???)
-    // Bright Red
-    // Bright Green
-    // Bright Yellow
-    // Bright Blue
-    // Bright Magenta
-    // Bright Cyan
-    // Bright White
+    { 12,  12,  12,  30,  40  },    // Black          (R:12  G:12  B:12  FG:30  BG:40  HEX:0x0C0C0C)
+    { 197, 15,  31,  31,  41  },    // Red            (R:197 G:15  B:31  FG:31  BG:41  HEX:0xC50F1F)
+    { 19,  161, 14,  32,  42  },    // Green          (R:19  G:161 B:14  FG:32  BG:42  HEX:0x13A10E)
+    { 193, 156, 0,   33,  43  },    // Yellow         (R:193 G:156 B:0   FG:33  BG:43  HEX:0xC19C00)
+    { 0,   55,  218, 34,  44  },    // Blue           (R:0   G:55  B:218 FG:34  BG:44  HEX:0x0037DA)
+    { 136, 23,  152, 35,  45  },    // Magenta        (R:136 G:23  B:152 FG:35  BG:45  HEX:0x881798)
+    { 58,  150, 221, 36,  46  },    // Cyan           (R:58  G:150 B:221 FG:36  BG:46  HEX:0x3A96DD)
+    { 204, 204, 204, 37,  47  },    // White          (R:204 G:204 B:204 FG:37  BG:47  HEX:0xCCCCCC)
+    { 118, 118, 118, 90,  100 },    // Bright Black   (R:118 G:118 B:118 FG:90  BG:100 HEX:0x767676)
+    { 231, 72,  86,  91,  101 },    // Bright Red     (R:231 G:72  B:86  FG:91  BG:101 HEX:0xE74856)
+    { 22,  198, 12,  92,  102 },    // Bright Green   (R:22  G:198 B:12  FG:92  BG:102 HEX:0x16C60C)
+    { 248, 240, 165, 93,  103 },    // Bright Yellow  (R:248 G:240 B:165 FG:93  BG:103 HEX:0xF8F0A5)
+    { 59,  120, 255, 94,  104 },    // Bright Blue    (R:59  G:120 B:255 FG:94  BG:104 HEX:0x3B78FF)
+    { 180, 0,   158, 95,  105 },    // Bright Magenta (R:180 G:0   B:158 FG:95  BG:105 HEX:0xB4009E)
+    { 96,  213, 213, 96,  106 },    // Bright Cyan    (R:96  G:213 B:213 FG:96  BG:106 HEX:0x60D5D5)
+    { 242, 242, 242, 97,  107 }     // Bright White   (R:242 G:242 B:242 FG:97  BG:107 HEX:0xF2F2F2)
 };
 
 static __console_rgb_value_t __console_rgb_closest(__console_rgb_t rgb) {
@@ -300,9 +300,9 @@ static __console_rgb_value_t __console_rgb_closest_v(uint8_t r, uint8_t g, uint8
 
 static __console_rgb_t __console_hex_to_rgb(uint32_t hex) {
     return {
-        (uint8_t)(((hex >> 16) & 0xFF) / 255),
-        (uint8_t)(((hex >> 8) & 0xFF) / 255),
-        (uint8_t)(((hex) & 0xFF) / 255) 
+        (uint8_t)((hex >> 16) & 0xFF),
+        (uint8_t)((hex >> 8) & 0xFF),
+        (uint8_t)((hex) & 0xFF)
     };
 }
 
