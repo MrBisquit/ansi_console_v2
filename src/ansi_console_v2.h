@@ -290,8 +290,26 @@ static __console_rgb_value_t __console_rgb_colors[16] = {
     { 242, 242, 242, 97,  107 }     // Bright White   (R:242 G:242 B:242 FG:97  BG:107 HEX:0xF2F2F2)
 };
 
+constexpr size_t __console_rgb_colors_total = sizeof(__console_rgb_colors) / sizeof(__console_rgb_value_t);
+
 static __console_rgb_value_t __console_rgb_closest(__console_rgb_t rgb) {
-    // TODO: Functionality for this
+    __console_rgb_value_t closest = __console_rgb_colors[0];
+    uint16_t min_dist = UINT16_MAX;
+
+    for(size_t i = 0; i < __console_rgb_colors_total; i++) {
+        uint8_t d_r = __console_rgb_colors[i].r;
+        uint8_t d_g = __console_rgb_colors[i].g;
+        uint8_t d_b = __console_rgb_colors[i].b;
+
+        uint16_t dist = (d_r * d_r) + (d_g * d_g) + (d_b * d_b);
+
+        if(dist < min_dist) {
+            min_dist = dist;
+            closest = __console_rgb_colors[i];
+        }
+    }
+
+    return closest;
 }
 
 static __console_rgb_value_t __console_rgb_closest_v(uint8_t r, uint8_t g, uint8_t b) {
