@@ -290,7 +290,7 @@ static __console_rgb_value_t __console_rgb_colors[16] = {
     { 242, 242, 242, 97,  107 }     // Bright White   (R:242 G:242 B:242 FG:97  BG:107 HEX:0xF2F2F2)
 };
 
-constexpr size_t __console_rgb_colors_total = sizeof(__console_rgb_colors) / sizeof(__console_rgb_value_t);
+const size_t __console_rgb_colors_total = sizeof(__console_rgb_colors) / sizeof(__console_rgb_value_t);
 
 static __console_rgb_value_t __console_rgb_closest(__console_rgb_t rgb) {
     __console_rgb_value_t closest = __console_rgb_colors[0];
