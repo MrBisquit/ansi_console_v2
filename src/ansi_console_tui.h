@@ -1,3 +1,13 @@
+/** ansi_console_tui.h made by William Dawson (MrBisquit on Github, https://wtdawson.info)
+ *  GitHub:     https://github.com/MrBisquit/ansi_console_v2
+ *  File:       https://github.com/MrBisquit/ansi_console_v2/tree/main/src/ansi_console_tui.h
+ *  License:    SPDX-License-Identifier: MIT
+ *              See LICENSE file in the project root for full license text.
+ * 
+ *  This is an extension of ansi_console_v2.h, with a bare-bones TUI.
+ *  Below is a copy of ansi_console_v2.h, as it's needed for this file
+ */
+
 /** ansi_console_v2.h made by William Dawson (MrBisquit on Github, https://wtdawson.info)
  *  GitHub:     https://github.com/MrBisquit/ansi_console_v2
  *  File:       https://github.com/MrBisquit/ansi_console_v2/tree/main/src/ansi_console_v2.h
@@ -380,3 +390,40 @@ static uint8_t console_rgb_to_color_bg(__console_rgb_t rgb) {
 #endif // CONSOLE_H
 
 #pragma pack(pop)
+
+#pragma region    // TUI
+
+#pragma pack(2)
+
+#ifndef TUI_H
+#define TUI_H
+
+/**
+ * TUI structures, functions, and anything else begin with `tui_`, and TUI utilities begin with `__tui_`
+ * 
+ * This a system designed on components, you have base components such as the header, and footer,
+ * and you call the rest of the components to render manually
+ */
+
+typedef enum {
+    TUI_HEADER_COMPONENT,
+    TUI_FOOTER_COMPONENT,
+    TUI_MISC_COMPONENT      // Any other type of component
+} TUI_COMPONENT_TYPE;
+
+typedef struct tui_component_region {
+    uint16_t x, y, w, h;
+} tui_component_region_t;
+
+typedef struct tui_component {
+    TUI_COMPONENT_TYPE type;
+    tui_component_region_t region;
+} tui_component_t;
+
+typedef struct tui_header_component {
+    tui_component_t base;
+} tui_header_component_t;
+
+#endif // TUI_H
+
+#pragma endregion // TUI

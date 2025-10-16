@@ -1,4 +1,4 @@
-# ANSI Console V2
+# ANSI Console V2 + ANSI Console TUI
 A header-only library for using ANSI console escape codes, it is currently only available as a C header file.
 
 ![License](https://badgen.net/github/license/MrBisquit/ansi_console_v2)
